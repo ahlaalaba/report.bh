@@ -30,7 +30,7 @@
                     <i class="fa-solid fa-vest-patches"></i>
                 </div>
                 <div>
-                    <h1 class="text-base sm:text-lg font-bold leading-tight">نظام تقارير المضيف - العباءة</h1>
+                    <h1 class="text-base sm:text-lg font-bold leading-tight">نظام تقارير المضيف - العباء</h1>
                     <p class="text-xs text-slate-400">نموذج إرسال البلاغات السريع</p>
                 </div>
             </div>
@@ -94,11 +94,6 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">قسم العباءة / موضوع البلاغ *</label>
                         <select id="reportCategory" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none transition-all">
-                            <option value="عباءة مفقودة / عُثر عليها">عباءة مفقودة / عُثر عليها</option>
-                            <option value="تبديل عباءة بالخطأ">تبديل عباءة بالخطأ</option>
-                            <option value="عباءة بدون بطاقة / الرقم السري">عباءة بدون بطاقة / الرقم</option>
-                            <option value="ملاحظة أو طلب خاص للعباءة">ملاحظة أو طلب خاص</option>
-                            <option value="بلاغ آخر">بلاغ آخر</option>
                         </select>
                     </div>
                     <div>
