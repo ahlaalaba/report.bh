@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقرير مضيف أهل العباء</title>
+  <title>تقرير مضيف أهل العباء - البلاد القديم</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,7 +44,7 @@
       background-color: #f3f4f6;
     }
     
-    /* خلفية الشعار العلامة المائية 50% */
+    /* الشعار في خلفية الورقة بنسبة وضوح 50% */
     .watermark-bg {
       position: relative;
     }
@@ -54,18 +54,17 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
+      width: 75%;
+      height: 75%;
       background-image: url('image_be668db9-removebg-preview.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      opacity: 0.50; /* وضوح 50% */
+      opacity: 0.50;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* جعل محتويات الورقة فوق الخلفية */
     .print-content {
       position: relative;
       z-index: 10;
@@ -86,20 +85,13 @@
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
-        margin: 0 !important;
       }
       .watermark-bg::before {
-        opacity: 0.35 !important; /* تخفيف بسيط عند الطباعة لعدم تغطية الخط */
+        opacity: 0.30 !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      textarea {
-        border: none !important;
-        resize: none !important;
-        padding: 0 !important;
-        background: transparent !important;
-      }
-      input, select {
+      textarea, input, select {
         border: none !important;
         background: transparent !important;
         appearance: none !important;
@@ -107,32 +99,34 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 min-h-screen p-2 md:p-6 text-gray-800">
+<body class="bg-gray-100 min-h-screen p-3 md:p-6 text-gray-800">
 
   <div class="max-w-4xl mx-auto mb-20">
     
-    <!-- ورقة التقرير المحتوية على خلفية الشعار بوضوح 50% -->
+    <!-- ورقة التقرير -->
     <div class="print-container watermark-bg bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-10 relative overflow-hidden">
       
-      <!-- طبقة المحتوى الرئيسي -->
       <div class="print-content">
 
-        <!-- الترويسة الهيدر -->
+        <!-- الترويسة الهيدر الرسمية -->
         <header class="border-b-2 border-maroon-700 pb-6 mb-6">
           <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
             
-            <!-- الشعار والعنوان الرئيسي -->
+            <!-- الشعار مع الاسم الكامل للمواقف والرعاية -->
             <div class="flex items-center gap-4">
-              <img src="image_be668db9-removebg-preview.png" alt="مضيف أهل العباء" class="h-16 w-auto object-contain">
+              <img src="image_be668db9-removebg-preview.png" alt="مضيف أهل العباء" class="h-20 w-auto object-contain">
               <div>
                 <h1 class="text-2xl md:text-3xl font-black text-maroon-800 tracking-wide">مضيف أهل العباء</h1>
-                <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">نظام التوثيق والتقارير اليومية</p>
+                <p class="text-xs md:text-sm text-gold-600 font-bold mt-1">
+                  <i class="fa-solid fa-location-dot ml-1"></i> البلاد القديم — مملكة البحرين
+                </p>
+                <p class="text-[11px] text-gray-400 font-semibold mt-0.5">نظام إرسال وتوثيق التقارير اليومية</p>
               </div>
             </div>
 
-            <!-- التوقيت والتاريخ التلقائي الحي -->
-            <div class="bg-maroon-50/90 backdrop-blur-sm border border-maroon-100 rounded-lg p-3 text-center md:text-left min-w-[200px]">
-              <div id="liveDay" class="text-maroon-800 font-bold text-sm">--</div>
+            <!-- اليوم والتاريخ والساعة الحية -->
+            <div class="bg-maroon-50/90 backdrop-blur-sm border border-maroon-100 rounded-lg p-3 text-center md:text-left min-w-[210px]">
+              <div id="liveDay" class="text-maroon-800 font-black text-sm">--</div>
               <div id="liveDate" class="text-gray-600 text-xs font-semibold my-0.5">--/--/----</div>
               <div id="liveTime" class="text-gold-600 font-black text-sm dir-ltr">--:--:-- --</div>
             </div>
@@ -140,66 +134,63 @@
           </div>
         </header>
 
-        <!-- تنبيه الخطأ عند إغفال ملء البيانات -->
-        <div id="alertMessage" class="hidden mb-6 bg-red-100/90 border-r-4 border-red-600 text-red-700 p-4 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm">
+        <!-- تنبيه الخطأ عند ترك الحقول الفارغة -->
+        <div id="alertMessage" class="hidden mb-6 bg-red-100 border-r-4 border-red-600 text-red-700 p-4 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm">
           <i class="fa-solid fa-circle-exclamation text-lg"></i>
-          <span>الرجاء ملء اسم معد التقرير وتفاصيل التقرير أولاً.</span>
+          <span>الرجاء ملء اسم الكريم وتفاصيل التقرير أولاً.</span>
         </div>
 
-        <!-- تنبيه النجاح عند الحفظ -->
-        <div id="successMessage" class="hidden mb-6 bg-green-100/90 border-r-4 border-green-600 text-green-700 p-4 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm">
+        <!-- تنبيه النجاح عند الإرسال -->
+        <div id="successMessage" class="hidden mb-6 bg-green-100 border-r-4 border-green-600 text-green-700 p-4 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm">
           <i class="fa-solid fa-circle-check text-lg"></i>
-          <span>تم حفظ التقرير بنجاح!</span>
+          <span>تم إرسال وحفظ التقرير بنجاح!</span>
         </div>
 
         <!-- نموذج كتابة التقرير -->
         <form id="reportForm" class="space-y-6">
           
-          <!-- الصف الأول: اسم المُعد ورقم الهاتف -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <!-- اسم معد التقرير -->
+            <!-- حقل اسم الكريم -->
             <div class="bg-white/80 p-2 rounded-lg">
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fa-solid fa-user text-maroon-700 ml-1"></i> اسم مُعد التقرير <span class="text-red-500">*</span>
+                <i class="fa-solid fa-user text-maroon-700 ml-1"></i> اسم الكريم <span class="text-red-500">*</span>
               </label>
               <input 
                 type="text" 
                 id="reporterName" 
-                placeholder="اكتب الاسم الكامل..."
-                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 bg-white/90 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium"
+                placeholder="اكتب اسم الكريم الكامل..."
+                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 bg-white/95 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium"
               />
             </div>
 
-            <!-- رقم الهاتف مع مفتاح الدولة -->
+            <!-- حقل رقم الهاتف مع رمـز الدولة -->
             <div class="bg-white/80 p-2 rounded-lg">
               <label class="block text-sm font-bold text-gray-700 mb-2">
                 <i class="fa-solid fa-phone text-maroon-700 ml-1"></i> رقم الهاتف
               </label>
               <div class="flex gap-2 dir-ltr">
-                <!-- رمز الدولة -->
-                <select id="countryCode" class="border border-gray-300 rounded-lg px-2 py-2.5 bg-gray-50/90 text-xs md:text-sm font-bold text-gray-700 focus:ring-2 focus:ring-maroon-700 outline-none">
-                  <option value="+973">🇧🇭 +973</option>
-                  <option value="+964">🇮🇶 +964</option>
+                <select id="countryCode" class="border border-gray-300 rounded-lg px-2 py-2.5 bg-gray-50 text-xs md:text-sm font-bold text-gray-700 focus:ring-2 focus:ring-maroon-700 outline-none">
+                  <option value="+973" selected>🇧🇭 +973</option>
                   <option value="+966">🇸🇦 +966</option>
+                  <option value="+964">🇮🇶 +964</option>
                   <option value="+965">🇰🇼 +965</option>
                   <option value="+971">🇦🇪 +971</option>
                   <option value="+968">🇴🇲 +968</option>
                   <option value="+974">🇶🇦 +974</option>
                 </select>
-                <!-- إدخال رقم الهاتف -->
                 <input 
                   type="tel" 
                   id="phoneNumber" 
                   placeholder="3XXXXXXXX"
-                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 bg-white/90 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium text-left dir-ltr"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 bg-white/95 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium text-left dir-ltr"
                 />
               </div>
             </div>
 
           </div>
 
-          <!-- تفاصيل التقرير -->
+          <!-- حقل تفاصيل التقرير -->
           <div class="bg-white/80 p-2 rounded-lg">
             <label class="block text-sm font-bold text-gray-700 mb-2">
               <i class="fa-solid fa-align-right text-maroon-700 ml-1"></i> تفاصيل التقرير <span class="text-red-500">*</span>
@@ -208,15 +199,15 @@
               id="reportDetails" 
               rows="12" 
               placeholder="اكتب تفاصيل وملاحظات التقرير هنا..."
-              class="w-full border border-gray-300 rounded-lg p-4 bg-white/90 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium leading-relaxed"
+              class="w-full border border-gray-300 rounded-lg p-4 bg-white/95 focus:ring-2 focus:ring-maroon-700 focus:border-maroon-700 outline-none transition text-sm font-medium leading-relaxed"
             ></textarea>
           </div>
 
         </form>
 
-        <!-- ترويسة سفلية للطباعة -->
+        <!-- الترويسة السفلية للطباعة -->
         <footer class="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-500 hidden print:block font-bold">
-          مضيف أهل العباء — التقرير الإلكتروني الموثق
+          مضيف أهل العباء — البلاد القديم (مملكة البحرين)
         </footer>
 
       </div>
@@ -229,12 +220,11 @@
   <div class="no-print fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 py-3 px-4 shadow-2xl z-50">
     <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-3">
       
-      <div class="text-xs text-gray-600 font-bold hidden md:block flex items-center gap-2">
+      <div class="text-xs text-gray-600 font-bold hidden md:flex items-center gap-2">
         <img src="image_be668db9-removebg-preview.png" alt="شعار" class="h-6 w-auto inline">
-        مضيف أهل العباء
+        مضيف أهل العباء - البلاد القديم
       </div>
 
-      <!-- الأزرار السفليّة -->
       <div class="flex items-center gap-3 w-full md:w-auto justify-end">
         
         <!-- زر التفريغ -->
@@ -243,16 +233,16 @@
           onclick="clearForm()"
           class="flex-1 md:flex-none px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-bold text-sm transition flex items-center justify-center gap-2"
         >
-          <i class="fa-solid fa-trash-can text-red-500"></i> تفريغ
+          <i class="fa-solid fa-trash-can text-red-500"></i> تفريغ الحقول
         </button>
 
-        <!-- زر الحفظ -->
+        <!-- زر الإرسال / الحفظ -->
         <button 
           type="button" 
-          onclick="saveReport()"
+          onclick="submitReport()"
           class="flex-1 md:flex-none px-5 py-2.5 bg-maroon-700 hover:bg-maroon-800 text-white rounded-lg font-bold text-sm transition shadow-md flex items-center justify-center gap-2"
         >
-          <i class="fa-solid fa-floppy-disk text-gold-400"></i> حفظ التقرير
+          <i class="fa-solid fa-paper-plane text-gold-400"></i> إرسال التقرير
         </button>
 
         <!-- زر الطباعة -->
@@ -261,7 +251,7 @@
           onclick="printReport()"
           class="flex-1 md:flex-none px-5 py-2.5 bg-gold-500 hover:bg-gold-600 text-white rounded-lg font-bold text-sm transition shadow-md flex items-center justify-center gap-2"
         >
-          <i class="fa-solid fa-print"></i> طباعة / تصدير PDF
+          <i class="fa-solid fa-print"></i> طباعة / PDF
         </button>
 
       </div>
@@ -273,7 +263,6 @@
     // 1. التوقيت والتاريخ التلقائي الحي
     function updateLiveDateTime() {
       const now = new Date();
-
       const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
       const dayName = days[now.getDay()];
 
@@ -285,8 +274,7 @@
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
       const ampm = hours >= 12 ? 'م' : 'ص';
-      hours = hours % 12;
-      hours = hours ? hours : 12; 
+      hours = hours % 12 || 12;
 
       document.getElementById('liveDay').textContent = dayName;
       document.getElementById('liveDate').textContent = `${year}/${month}/${day}`;
@@ -296,7 +284,7 @@
     setInterval(updateLiveDateTime, 1000);
     updateLiveDateTime();
 
-    // 2. التحقق من كتابة التقرير ملء البيانات
+    // 2. التحقق من ملء اسم الكريم وتفاصيل التقرير
     function validateForm() {
       const reporterName = document.getElementById('reporterName');
       const reportDetails = document.getElementById('reportDetails');
@@ -326,8 +314,8 @@
       return isValid;
     }
 
-    // 3. دالة حفظ التقرير
-    function saveReport() {
+    // 3. دالة إرسال التقرير
+    function submitReport() {
       if (!validateForm()) return;
 
       const data = {
@@ -335,18 +323,19 @@
         countryCode: document.getElementById('countryCode').value,
         phone: document.getElementById('phoneNumber').value,
         details: document.getElementById('reportDetails').value,
+        location: 'البلاد القديم - مملكة البحرين',
         date: document.getElementById('liveDate').textContent,
         time: document.getElementById('liveTime').textContent
       };
 
-      localStorage.setItem('ahl_alabaa_report', JSON.stringify(data));
+      localStorage.setItem('ahl_alabaa_bh_report', JSON.stringify(data));
       
       const successMessage = document.getElementById('successMessage');
       successMessage.classList.remove('hidden');
-      setTimeout(() => successMessage.classList.add('hidden'), 3000);
+      setTimeout(() => successMessage.classList.add('hidden'), 4000);
     }
 
-    // 4. دالة الطباعة
+    // 4. دالة الطباعة وتصدير PDF
     function printReport() {
       if (!validateForm()) return;
       window.print();
@@ -354,28 +343,13 @@
 
     // 5. دالة التفريغ
     function clearForm() {
-      if (confirm('هل أنت تأكد من تفريغ كافة حقول التقرير؟')) {
+      if (confirm('هل أنت متأكد من تفريغ كافة حقول التقرير؟')) {
         document.getElementById('reportForm').reset();
         document.getElementById('alertMessage').classList.add('hidden');
         document.getElementById('reporterName').classList.remove('border-red-500', 'bg-red-50');
         document.getElementById('reportDetails').classList.remove('border-red-500', 'bg-red-50');
-        localStorage.removeItem('ahl_alabaa_report');
       }
     }
-
-    // 6. استرجاع البيانات
-    window.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('ahl_alabaa_report');
-      if (saved) {
-        try {
-          const data = JSON.parse(saved);
-          if (data.name) document.getElementById('reporterName').value = data.name;
-          if (data.countryCode) document.getElementById('countryCode').value = data.countryCode;
-          if (data.phone) document.getElementById('phoneNumber').value = data.phone;
-          if (data.details) document.getElementById('reportDetails').value = data.details;
-        } catch(e) {}
-      }
-    });
   </script>
 </body>
 </html>
