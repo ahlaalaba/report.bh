@@ -90,12 +90,10 @@
                 </div>
 
     
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">/ رقم الهادف</label>
-                        <input type="text" id="abayaTag" placeholder="  15"
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">/ رقم الهاتف</label>
+                        <input type="text" id="abayaTag" placeholder="  "
                                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none transition-all">
-                    </div>
-                </div>
-
+                    
                 <!-- Priority Selection -->
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">درجة الأهمية *</label>
