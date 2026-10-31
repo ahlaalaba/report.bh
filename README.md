@@ -89,16 +89,9 @@
                     </div>
                 </div>
 
-                <!-- Abaya Category & Tag/Location -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">قسم العباءة / موضوع البلاغ *</label>
-                        <select id="reportCategory" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none transition-all">
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">رقم العباءة / رقم الطاولة أو الجناح</label>
-                        <input type="text" id="abayaTag" placeholder="مثال: #402 أو طاولة 15"
+    
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">/ رقم الهادف</label>
+                        <input type="text" id="abayaTag" placeholder="  15"
                                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none transition-all">
                     </div>
                 </div>
